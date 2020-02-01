@@ -33,13 +33,17 @@ public class PlayerInput : MonoBehaviour
         desiredVelocity += flatRight * Input.GetAxis(horizontalAxisName);
         //Add the forward/back amount
         desiredVelocity += flatForward * -Input.GetAxis(verticalAxisName);
-        //Normalise velocity
-        desiredVelocity = desiredVelocity.normalized * speed; 
-        //Make sure you're using gravity
-        desiredVelocity.y = rBody.velocity.y;
 
-        //Blend to desired force
-        rBody.velocity = Vector3.Lerp(rBody.velocity, desiredVelocity, Time.deltaTime * acceleration);
+        if (desiredVelocity.magnitude > 0.1f)
+        {
+            //Normalise velocity
+            desiredVelocity = desiredVelocity.normalized * speed;
+            //Make sure you're using gravity
+            desiredVelocity.y = rBody.velocity.y;
+
+            //Blend to desired force
+            rBody.velocity = Vector3.Lerp(rBody.velocity, desiredVelocity, Time.deltaTime * acceleration);
+        }
 
         desiredVelocity = rBody.velocity;
         desiredVelocity.y = 0;
