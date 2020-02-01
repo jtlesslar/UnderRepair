@@ -52,5 +52,30 @@ public class PlayerInput : MonoBehaviour
             //Look at direction of rotation
             rBody.MoveRotation(Quaternion.Slerp(rBody.rotation, Quaternion.LookRotation(desiredVelocity, Vector3.up), Time.deltaTime * rotationSpeed));
         }
+
+        if (Input.GetKey("joystick button 0"))
+        {            
+            Vector3 startPos = transform.position;
+
+            Vector3 endPosition = transform.forward;
+
+            Debug.DrawRay(startPos,transform.forward,Color.blue);
+
+            RaycastHit hitInfo;
+
+            if ( Physics.Raycast(startPos, transform.forward, out hitInfo, 1f))
+            {               
+                Interactable inter = hitInfo.collider.gameObject.GetComponent<Interactable>();
+
+                if (inter)
+                {
+                    inter.Interact();
+
+                    Destroy(hitInfo.collider.gameObject);
+                }
+            }
+                       
+        }
+
     }
 }
