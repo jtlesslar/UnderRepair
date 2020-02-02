@@ -4,7 +4,7 @@ using UnityEngine;
 public class OURInteract : Interactable
 {
 
-    bool hasMaterial = true;
+    bool hasMaterial = false;
 
     bool repaired = false;
 
@@ -15,15 +15,25 @@ public class OURInteract : Interactable
 
     AudioSource audioSource;
 
+    GameObject player;
+
+    GameObject winScreen;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         progressBar = GetComponentInChildren<ProgressBar>();
+
+        winScreen = GameObject.Find("Win Screen");
+
+        winScreen.SetActive(false);
     }
 
     public override void Interact(GameObject player)
     {
         base.Interact(player);
+
+        this.player = player;
 
         Repair();
     }
@@ -38,11 +48,21 @@ public class OURInteract : Interactable
             {
                 if (progressBar.BarValue < 100)
                 {
-                    progressBar.BarValue += 10;
+                    progressBar.BarValue += 20;
 
                     audioSource.Play();
                     
                     nextRepairTime = Time.time + repairDelay;
+                }
+                else
+                {
+                    winScreen.SetActive(true);
+
+                    TMPro.TextMeshProUGUI text= winScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+
+                    text.text = player.name + "wins!";
+
+                    Time.timeScale = 0;
                 }
             }
         }
@@ -54,6 +74,7 @@ public class OURInteract : Interactable
         if (material.tag == "Material")
         {
             Debug.Log(material.tag);
+            hasMaterial = true;
             Destroy(material.gameObject);
         }
     }
