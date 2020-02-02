@@ -10,12 +10,16 @@ public class Spawner : MonoBehaviour{
     public GameObject[] whatToSpawnClone; 
 
 
-    void start(){
+    public void Start(){
         spawnMaterialsToolsPlease();
     }
 
     void spawnMaterialsToolsPlease(){
+        Debug.Log("dsafsdf");
         whatToSpawnClone[0] = Instantiate(whatToSpawnPrefab[0],spawnLocations[0].transform.position, Quaternion.Euler(0,0,0)) as GameObject;
+        whatToSpawnClone[1] = Instantiate(whatToSpawnPrefab[1],spawnLocations[1].transform.position, Quaternion.Euler(0,0,0)) as GameObject;
+        whatToSpawnClone[2] = Instantiate(whatToSpawnPrefab[2],spawnLocations[2].transform.position, Quaternion.Euler(0,0,0)) as GameObject;
+        whatToSpawnClone[3] = Instantiate(whatToSpawnPrefab[3],spawnLocations[3].transform.position, Quaternion.Euler(0,0,0)) as GameObject;
     }
 
 }
