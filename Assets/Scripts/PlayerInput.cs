@@ -7,6 +7,7 @@ public class PlayerInput : MonoBehaviour
 {
     public string horizontalAxisName = "Joy1Horz";
     public string verticalAxisName = "Joy1Vert";
+    public string joystickButton0 = "joystick 1 button 0";
     public float speed = 1;
     public float acceleration = 1;
     public float rotationSpeed = 1;
@@ -53,9 +54,9 @@ public class PlayerInput : MonoBehaviour
             rBody.MoveRotation(Quaternion.Slerp(rBody.rotation, Quaternion.LookRotation(desiredVelocity, Vector3.up), Time.deltaTime * rotationSpeed));
         }
 
-        if (Input.GetKey("joystick button 0"))
+        if (Input.GetKey(joystickButton0))
         {            
-            Vector3 startPos = transform.position;
+            Vector3 startPos = transform.position + new Vector3(0,-0.7f,0);
 
             Vector3 endPosition = transform.forward;
 
