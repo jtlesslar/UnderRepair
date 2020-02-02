@@ -6,6 +6,8 @@ public class OURInteract : Interactable
 
     bool hasMaterial = false;
 
+    int materialCount = 0;
+
     bool repaired = false;
 
     float nextRepairTime = 0f;
@@ -49,19 +51,20 @@ public class OURInteract : Interactable
                     progressBar.BarValue += 20;
 
                     audioSource.Play();
-                    
+
                     nextRepairTime = Time.time + repairDelay;
-                }
-                else
-                {
-                    winScreen.SetActive(true);
 
-                    TMPro.TextMeshProUGUI text= winScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+                    if (progressBar.BarValue >= 100)
+                    {
+                        winScreen.SetActive(true);
 
-                    text.text = player.name + "wins!";
+                        TMPro.TextMeshProUGUI text = winScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>();
 
-                    Time.timeScale = 0;
-                }
+                        text.text = player.name + "wins!";
+
+                        Time.timeScale = 0;
+                    }
+                }    
             }
         }
     }
@@ -72,9 +75,16 @@ public class OURInteract : Interactable
         if (material.tag == "Material")
         {
             Debug.Log(material.tag);
-            hasMaterial = true;
+
+            materialCount++;
+            if (materialCount >=2)
+            {
+                hasMaterial = true;
+            }
+              
             Destroy(material.gameObject);
         }
     }
+
 }
 
