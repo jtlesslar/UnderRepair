@@ -70,8 +70,6 @@ public class PlayerInput : MonoBehaviour
                 if (inter)
                 {
                     inter.Interact();
-
-                    Destroy(hitInfo.collider.gameObject);
                 }
             }
                        
