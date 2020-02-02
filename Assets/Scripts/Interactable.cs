@@ -6,7 +6,7 @@ public class Interactable : MonoBehaviour
     public Transform interactionTransform;
 
 
-    public virtual void Interact()
+    public virtual void Interact(GameObject player)
     {
         Debug.Log("Interacting with " + transform.name);
     }

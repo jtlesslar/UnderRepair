@@ -2,19 +2,44 @@
 using UnityEngine;
 
 public class MaterialPickup : Interactable
-{  
+{
+    private bool isHeld = false;
+    private Transform origParent;
 
-    public override void Interact()
+    public override void Interact(GameObject player)
     {
-        base.Interact();
+        base.Interact(player);
 
-        Pickup();
+        if (isHeld)
+            Drop();
+        else
+            Pickup(player);
     }
 
-    void Pickup()
+    void Pickup(GameObject player)
     {
         Debug.Log("Picking up material");
+        origParent = transform.parent;
+        GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<Rigidbody>().useGravity = false;
+        //GetComponent<Rigidbody>().detectCollisions = false;
+        transform.position = player.transform.position + player.transform.forward;
+        transform.parent = player.transform;
+        isHeld = true;
+    }
 
+    public void Drop()
+    {
+        GetComponent<Rigidbody>().isKinematic = false;
+        GetComponent<Rigidbody>().useGravity = true;
+        //GetComponent<Rigidbody>().detectCollisions = true;
+        transform.parent = origParent.transform;
+        isHeld = false;
+    }
+
+    public bool IsHeld()
+    {
+        return isHeld;
     }
 }
 
