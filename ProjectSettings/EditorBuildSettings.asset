@@ -4,5 +4,20 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Gameplay.unity
+    guid: 61cc03ce2166ea342b3caef2697eb3dd
+  - enabled: 1
+    path: Assets/Scenes/Blue Win Screen.unity
+    guid: eb265d23daaac1e49b6847b9e3b9e899
+  - enabled: 1
+    path: Assets/Scenes/Green Win Screen.unity
+    guid: 96a06c975d4833b46bb97047f07c856b
+  - enabled: 1
+    path: Assets/Scenes/Red Win Screen.unity
+    guid: edbb87607c170414b857136fc783b7bf
+  - enabled: 1
+    path: Assets/Scenes/Yellow Win Screen.unity
+    guid: 8992f56d3355f6e44b22b2bc94956e75
   m_configObjects: {}

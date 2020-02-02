@@ -61,7 +61,7 @@ public class OURInteract : Interactable
                                 SceneManager.LoadScene("Green Win Screen", LoadSceneMode.Single);
                                 break;
                             case "Player 3":
-                                SceneManager.LoadScene("Yello Win Screen", LoadSceneMode.Single);
+                                SceneManager.LoadScene("Yellow Win Screen", LoadSceneMode.Single);
                                 break;
                             case "Player 4":
                                 SceneManager.LoadScene("Red Win Screen", LoadSceneMode.Single);
