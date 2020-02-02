@@ -63,30 +63,32 @@ public class PlayerInput : MonoBehaviour
                 rBody.MoveRotation(Quaternion.Slerp(rBody.rotation, Quaternion.LookRotation(desiredVelocity, Vector3.up), Time.deltaTime * rotationSpeed));
             }
 
-            if (Input.GetKey(joystickButton0))
+            if (Input.GetKeyDown(joystickButton0))
             {
                 if (heldObj && heldObj.IsHeld())
                 {
                     heldObj.Drop();
                 }
-
-                Vector3 startPos = transform.position + new Vector3(0, -0.6f, 0);
-
-                Vector3 endPosition = transform.forward;
-
-                Debug.DrawRay(startPos, transform.forward, Color.blue);
-
-                RaycastHit hitInfo;
-
-                if (Physics.Raycast(startPos, transform.forward, out hitInfo, 2f))
+                else
                 {
-                    heldObj = hitInfo.collider.gameObject.GetComponent<MaterialPickup>();
+                    Vector3 startPos = transform.position + new Vector3(0, -0.7f, 0);
 
-                    Interactable inter = hitInfo.collider.gameObject.GetComponent<Interactable>();
+                    Vector3 endPosition = transform.forward;
 
-                    if (inter)
+                    Debug.DrawRay(startPos, transform.forward, Color.blue);
+
+                    RaycastHit hitInfo;
+
+                    if (Physics.Raycast(startPos, transform.forward, out hitInfo, 2f))
                     {
-                        inter.Interact(gameObject);
+                        heldObj = hitInfo.collider.gameObject.GetComponent<MaterialPickup>();
+
+                        Interactable inter = hitInfo.collider.gameObject.GetComponent<Interactable>();
+
+                        if (inter)
+                        {
+                            inter.Interact(gameObject);
+                        }
                     }
                 }
             }
