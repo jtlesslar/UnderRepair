@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OURInteract : Interactable
 {
@@ -19,14 +20,10 @@ public class OURInteract : Interactable
 
     GameObject player;
 
-    public GameObject winScreen;
-
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         progressBar = GetComponentInChildren<ProgressBar>();
-
-        winScreen.SetActive(false);
     }
 
     public override void Interact(GameObject player)
@@ -56,13 +53,20 @@ public class OURInteract : Interactable
 
                     if (progressBar.BarValue >= 100)
                     {
-                        winScreen.SetActive(true);
-
-                        TMPro.TextMeshProUGUI text = winScreen.GetComponentInChildren<TMPro.TextMeshProUGUI>();
-
-                        text.text = player.name + "wins!";
-
-                        Time.timeScale = 0;
+                        switch (player.name) {
+                            case "Player 1":
+                                SceneManager.LoadScene("Blue Win Screen", LoadSceneMode.Single);
+                                break;
+                            case "Player 2":
+                                SceneManager.LoadScene("Green Win Screen", LoadSceneMode.Single);
+                                break;
+                            case "Player 3":
+                                SceneManager.LoadScene("Yello Win Screen", LoadSceneMode.Single);
+                                break;
+                            case "Player 4":
+                                SceneManager.LoadScene("Red Win Screen", LoadSceneMode.Single);
+                                break;
+                        }
                     }
                 }    
             }
