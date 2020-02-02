@@ -13,6 +13,8 @@ public class PlayerInput : MonoBehaviour
     public float rotationSpeed = 1;
     public Rigidbody rBody;
 
+    protected MaterialPickup heldObj;
+
     private void Update()
     {
         if (rBody == null)
@@ -54,8 +56,12 @@ public class PlayerInput : MonoBehaviour
             rBody.MoveRotation(Quaternion.Slerp(rBody.rotation, Quaternion.LookRotation(desiredVelocity, Vector3.up), Time.deltaTime * rotationSpeed));
         }
 
-        if (Input.GetKey(joystickButton0))
-        {            
+        if (Input.GetKeyDown(joystickButton0))
+        {          
+            if (heldObj && heldObj.IsHeld()) {
+                heldObj.Drop();
+            }
+
             Vector3 startPos = transform.position + new Vector3(0,-0.7f,0);
 
             Vector3 endPosition = transform.forward;
@@ -67,10 +73,11 @@ public class PlayerInput : MonoBehaviour
             if ( Physics.Raycast(startPos, transform.forward, out hitInfo, 1f))
             {               
                 Interactable inter = hitInfo.collider.gameObject.GetComponent<Interactable>();
+                heldObj = hitInfo.collider.gameObject.GetComponent<MaterialPickup>();
 
                 if (inter)
                 {
-                    inter.Interact();
+                    inter.Interact(gameObject);
                 }
             }
                        

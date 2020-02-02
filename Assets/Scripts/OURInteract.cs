@@ -21,9 +21,9 @@ public class OURInteract : Interactable
         progressBar = GetComponentInChildren<ProgressBar>();
     }
 
-    public override void Interact()
+    public override void Interact(GameObject player)
     {
-        base.Interact();
+        base.Interact(player);
 
         Repair();
     }
