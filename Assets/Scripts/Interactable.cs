@@ -11,8 +11,6 @@ public class Interactable : MonoBehaviour
         Debug.Log("Interacting with " + transform.name);
     }
 
-
-
     private void OnDrawGizmosSelected()
     {
         if (interactionTransform == null)

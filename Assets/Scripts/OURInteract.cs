@@ -47,5 +47,15 @@ public class OURInteract : Interactable
             }
         }
     }
+
+    private void OnTriggerEnter(Collider material)
+    {
+        Debug.Log(material.name);
+        if (material.tag == "Material")
+        {
+            Debug.Log(material.tag);
+            Destroy(material.gameObject);
+        }
+    }
 }
 

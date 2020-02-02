@@ -26,15 +26,17 @@ public class MaterialPickup : Interactable
         transform.position = player.transform.position + player.transform.forward;
         transform.parent = player.transform;
         isHeld = true;
+        gameObject.tag = "Player";
     }
 
     public void Drop()
     {
         GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().useGravity = true;
-        //GetComponent<Rigidbody>().detectCollisions = true;
+        GetComponent<Rigidbody>().detectCollisions = true;
         transform.parent = origParent.transform;
         isHeld = false;
+        gameObject.tag = "Material";
     }
 
     public bool IsHeld()
