@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class Spawner : MonoBehaviour{
+
+
+    public Transform[] spawnLocations;
+    public GameObject[] whatToSpawnPrefab;
+    public GameObject[] whatToSpawnClone; 
+
+
+    void start(){
+        spawnMaterialsToolsPlease();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void spawnMaterialsToolsPlease(){
+        whatToSpawnClone[0] = Instantiate(whatToSpawnPrefab[0],spawnLocations[0].transform.position, Quaternion.Euler(0,0,0)) as GameObject;
     }
+
 }
