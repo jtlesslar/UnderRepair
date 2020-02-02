@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.20040467, g: 0, b: 0.20040467, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6656,10 +6656,12 @@ MonoBehaviour:
   horizontalAxisName: Joy1Horz
   verticalAxisName: Joy1Vert
   joystickButton0: joystick 1 button 0
+  joystickButton1: joystick 1 button 1
   speed: 10
   acceleration: 10
   rotationSpeed: 10
   rBody: {fileID: 0}
+  nextStunnable: 0
 --- !u!54 &571160702
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12624,11 +12626,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalAxisName: Joy3Horz
   verticalAxisName: Joy3Vert
-  joystickButton0: joystick 1 button 0
+  joystickButton0: joystick 3 button 0
+  joystickButton1: joystick 3 button 1
   speed: 10
   acceleration: 10
   rotationSpeed: 10
   rBody: {fileID: 0}
+  nextStunnable: 0
 --- !u!1 &1041608966
 GameObject:
   m_ObjectHideFlags: 0
@@ -23133,11 +23137,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalAxisName: Joy2Horz
   verticalAxisName: Joy2Vert
-  joystickButton0: joystick 1 button 0
+  joystickButton0: joystick 2 button 0
+  joystickButton1: joystick 2 button 1
   speed: 10
   acceleration: 10
   rotationSpeed: 10
   rBody: {fileID: 0}
+  nextStunnable: 0
 --- !u!4 &1790873433 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400002, guid: 3a7ac1831be7c11469f52b3160a0adf8,
@@ -25523,11 +25529,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalAxisName: Joy4Horz
   verticalAxisName: Joy4Vert
-  joystickButton0: joystick 1 button 0
+  joystickButton0: joystick 4 button 0
+  joystickButton1: joystick 4 button 1
   speed: 10
   acceleration: 10
   rotationSpeed: 10
   rBody: {fileID: 0}
+  nextStunnable: 0
 --- !u!1 &2012151458
 GameObject:
   m_ObjectHideFlags: 0
