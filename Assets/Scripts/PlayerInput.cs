@@ -56,7 +56,7 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetKey(joystickButton0))
         {            
-            Vector3 startPos = transform.position;
+            Vector3 startPos = transform.position + new Vector3(0,-0.7f,0);
 
             Vector3 endPosition = transform.forward;
 
