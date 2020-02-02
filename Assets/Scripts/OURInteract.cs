@@ -17,14 +17,12 @@ public class OURInteract : Interactable
 
     GameObject player;
 
-    GameObject winScreen;
+    public GameObject winScreen;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         progressBar = GetComponentInChildren<ProgressBar>();
-
-        winScreen = GameObject.Find("Win Screen");
 
         winScreen.SetActive(false);
     }
